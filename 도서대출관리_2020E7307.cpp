@@ -304,7 +304,7 @@ void bookRent() {//유저 함수
 		if (num == bookNumber) {
 			found = true;
 			if (status == 0) { // 문자열 비교에서 정수 비교로 변경
-				temp << num << "," << title << "," << author << ",1" << endl;
+				temp << num << "," << title << "," << author << ", 1" << endl;
 				cout << "대여 완료" << endl;
 			}
 			else {
@@ -360,7 +360,7 @@ void bookReturn() {//유저 함수
 		if (num == bookNumber) {
 			found = true;
 			if (status == 1) { // status를 문자열에서 정수로 변경
-				temp << num << "," << title << "," << author << ",0" << endl; // 반납 완료로 상태 변경
+				temp << num << "," << title << "," << author << ", 0" << endl; // 반납 완료로 상태 변경
 				cout << "반납 완료!" << endl;
 			}
 			else {
