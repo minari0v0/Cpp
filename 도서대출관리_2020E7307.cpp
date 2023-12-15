@@ -215,7 +215,7 @@ void showBooks() { //공통 함수
 	}
 }
 
-void searchBook() {
+void searchBook() {//유저함수
 	clearScreen();
 	cout << "--------------------------------------" << endl;
 	cout << "|            책 검색                  |" << endl;
