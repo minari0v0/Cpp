@@ -16,7 +16,7 @@ using namespace std;
 void showBooks();
 
 int bookOptions() {
-	
+
 
 	int selectedOption = 0;
 	cout << "옵션: ";
@@ -152,7 +152,7 @@ void DeleteBook() {//Admin 함수
 	{
 		size_t found = strTemp.find(id);
 		if (found != string::npos) {
-			cout << "Book: " << strTemp << endl;
+			cout << "삭제된 책 정보: " << strTemp << endl;
 			bookExist = true;
 			delBook = true;
 		}
@@ -185,33 +185,34 @@ void DeleteBook() {//Admin 함수
 
 
 void showBooks() { //공통 함수
-    clearScreen();
-    cout << "--- 저장된 책 목록 ---" << endl;
+	clearScreen();
+	cout << "--- 저장된 책 목록 ---" << endl;
 
-    ifstream data("도서관리.dat");
-    string row;
-    while (getline(data, row)) {
-        stringstream bookInfo(row);
-        string bookNumberStr, bookTitle, bookAuthor, bookStatus;
+	ifstream data("도서관리.dat");
+	string row;
+	while (getline(data, row)) {
+		stringstream bookInfo(row);
+		string bookNumberStr, bookTitle, bookAuthor, bookStatus;
 
-        getline(bookInfo, bookNumberStr, ',');
-        int bookNum = stoi(bookNumberStr);
+		getline(bookInfo, bookNumberStr, ',');
+		int bookNum = stoi(bookNumberStr);
 
-        getline(bookInfo >> ws, bookTitle, ',');
-        getline(bookInfo >> ws, bookAuthor, ',');
-        getline(bookInfo >> ws, bookStatus, ',');
+		getline(bookInfo >> ws, bookTitle, ',');
+		getline(bookInfo >> ws, bookAuthor, ',');
+		getline(bookInfo >> ws, bookStatus, ',');
 
-        // 공백 제거
-        bookStatus.erase(remove_if(bookStatus.begin(), bookStatus.end(), ::isspace), bookStatus.end());
+		// 공백 제거
+		bookStatus.erase(remove_if(bookStatus.begin(), bookStatus.end(), ::isspace), bookStatus.end());
 
-        cout << bookNum << "번, " << bookTitle << ", " << bookAuthor << ", " ;
+		cout << bookNum << "번, " << bookTitle << ", " << bookAuthor << ", ";
 
-        if (bookStatus == "1") {
-            cout << "대여 중" << endl;
-        } else {
-            cout << "대여 가능" << endl;
-        }
-    }
+		if (bookStatus == "1") {
+			cout << "대여 중" << endl;
+		}
+		else {
+			cout << "대여 가능" << endl;
+		}
+	}
 }
 
 void searchBook() {
@@ -259,7 +260,7 @@ void searchBook() {
 			cout << "대출상태 : " << Status << "\n";
 			cout << "============================\n";
 
-			
+
 			found = true;
 			break;
 		}
@@ -457,7 +458,7 @@ void changeAdminMode() {//관리자모드 진입
 			while (true) {
 				clearScreen();
 				string yn;
-				
+
 				cout << endl << "--- 안양대 미니 도서관 관리자 버전 ---" << endl;
 				displayMenuAdmin();
 
@@ -500,7 +501,7 @@ int main() {
 	cout << "	*** AYU Mini Library ***";
 	string yn;
 	while (true) {
-		cout << endl << "--- 안양대 미니 도서관 관리 프로그램 ---" << endl;
+		cout << endl << "--- 안양대 미니 도서관 책 대출 프로그램 ---" << endl;
 		UserMain();
 
 		int option = bookOptions();
